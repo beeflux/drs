@@ -16,10 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from openspace.views import OpenSpaceView, HazardResourceViewSet
+from openspace.views import OpenSpaceView, NearSpaceViewSet, SpaceGeojsonViewSet, SpaceViewSet
 
 urlpatterns = [
     path('', OpenSpaceView.as_view(), name="root"),
-    path('api/', HazardResourceViewSet.as_view(), name="api"),
+    path('api/', NearSpaceViewSet.as_view(), name="api"),
+    path('api/add/', SpaceViewSet.as_view({'get': 'list','post':'create'}), name="space-add"),
+    path('api/spaces/', SpaceGeojsonViewSet.as_view(), name="space"),
     path('admin/', admin.site.urls),
 ]
