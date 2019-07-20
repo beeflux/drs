@@ -7,13 +7,13 @@ from openspace.models import Space
 
 def extract(file_path):
     df = pd.read_excel(file_path, headers=1)
-    return df[df["_Geolocation_latitude"].notnull()].iloc[:, 3:6]
+    return df[df["_Geolocation_latitude"].notnull()].iloc[:, 2:6]
 
 
 def load(data):
     model_instances = [Space(
         name=row[0],
-        location=Point(row[1], row[2], srid=4326),
+        location=Point(row[2], row[3], srid=4326),
     ) for row in data.values.tolist()]
     Space.objects.bulk_create(model_instances)
 
