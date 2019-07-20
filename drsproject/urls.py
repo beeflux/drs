@@ -16,9 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from openspace.views import OpenSpaceView
+from openspace.views import OpenSpaceView, HazardResourceViewSet
 
 urlpatterns = [
     path('', OpenSpaceView.as_view(), name="root"),
+    path('api/', HazardResourceViewSet.as_view(), name="api"),
     path('admin/', admin.site.urls),
 ]
