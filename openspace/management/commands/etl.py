@@ -13,7 +13,7 @@ def extract(file_path):
 def load(data):
     model_instances = [Space(
         name=row[0],
-        location=Point(row[2], row[3], srid=4326),
+        location=Point(row[3], row[2], srid=4326),
     ) for row in data.values.tolist()]
     Space.objects.bulk_create(model_instances)
 

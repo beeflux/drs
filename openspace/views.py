@@ -89,7 +89,7 @@ class SpaceViewSet(viewsets.ModelViewSet):
         city = self.request.data.get('city')
         lat = self.request.data.get('lat')
         long = self.request.data.get('long')
-        location = Point(float(lat), float(long), srid=4326)
+        location = Point(float(long), float(lat), srid=4326)
         s = Space(name=name, address=address, city=city, location=location)
         s.save()
         return Response({"message":"Sucess"})
