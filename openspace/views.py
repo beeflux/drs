@@ -80,7 +80,7 @@ class SpaceGeojsonViewSet(views.APIView):
 
 
 class SpaceViewSet(viewsets.ModelViewSet):
-    queryset = Space.objects.all()
+    queryset = Space.objects.all()[0:0]
     serializer_class = SpaceCreateSerializer
 
     def create(self, request, *args, **kwargs):
